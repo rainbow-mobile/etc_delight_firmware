@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/default/production/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X.production.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>1049744</length>                 
+      <used>96812</used>                     
+      <free>952932</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>262144</length>                 
+      <used>10348</used>                     
+      <free>251796</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

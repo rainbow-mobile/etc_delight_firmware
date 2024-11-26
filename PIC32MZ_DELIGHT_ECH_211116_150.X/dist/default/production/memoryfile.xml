@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/default/production/PIC32MZ_DELIGHT_ECH_211116_150.X.production.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>1049728</length>                 
+      <used>100128</used>                     
+      <free>949600</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>524288</length>                 
+      <used>9772</used>                     
+      <free>514516</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

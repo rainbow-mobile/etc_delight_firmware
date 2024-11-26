@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/production/PIC33EP128_DELIGHT_SODA_HOT_ICECREAM_220314.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>16384</length>
+      <used>416</used>
+      <free>15968</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>131298</length>
+      <used>10881</used>
+      <free>120417</free>
+    </memory>
+  </executable>
+</project>
