@@ -445,22 +445,16 @@ int LAN2CAN_CANReceiveCheckFromRCR(void) {
                 CUP_DATA[cup_id].dispense_op_flag = can_msg->data[4];
             }
         }
-        else if(id == 0x150 || id == 0x151){
-            // soda dispenser
-            int soda_id = id-0x150;
-            if(soda_id == 0){       
-                soda_connection_count[soda_id] = 0;
-                SODA_DATA[soda_id].loadcell[0].value = (short)((can_msg->data[0]) | ((can_msg->data[1])<<8));
-                SODA_DATA[soda_id].loadcell[0].error = can_msg->data[2];
-                SODA_DATA[soda_id].loadcell[0].calib_param = (short)((can_msg->data[3]) | ((can_msg->data[4])<<8));
-                SODA_DATA[soda_id].out_state = can_msg->data[5];
-                SODA_DATA[soda_id].out_count = can_msg->data[6];
-                SODA_DATA[soda_id].last_error = can_msg->data[7];
-            }else{
-                SODA_DATA[0].loadcell[1].error = can_msg->data[2];
-                SODA_DATA[0].loadcell[1].calib_param = (short)((can_msg->data[3]) | ((can_msg->data[4])<<8));
-                SODA_DATA[0].loadcell[1].value = (short)((can_msg->data[0]) | ((can_msg->data[1])<<8));
-            }
+        else if(id == 0x151){
+            // soda dispenser    
+                soda_connection_count[0] = 0;
+                SODA_DATA[0].loadcell[0].value = (short)((can_msg->data[0]) | ((can_msg->data[1])<<8));
+                SODA_DATA[0].loadcell[0].error = can_msg->data[2];
+                SODA_DATA[0].loadcell[0].calib_param = (short)((can_msg->data[3]) | ((can_msg->data[4])<<8));
+                SODA_DATA[0].out_state = can_msg->data[5];
+                SODA_DATA[0].out_count = can_msg->data[6];
+                SODA_DATA[0].last_error = can_msg->data[7];
+            
         }
         else if(id >= 0x170 && id < 0x180){
             // syrup dispenser
@@ -726,8 +720,8 @@ int LAN2CAN_SendToPC(void) {
         gv.lanData.msgToClient[currentIndex] = (OUTLET_DATA[i].position[1]>>8)&0xFF;    currentIndex++;
         gv.lanData.msgToClient[currentIndex] = (OUTLET_DATA[i].position[1]>>16)&0xFF;    currentIndex++;
         gv.lanData.msgToClient[currentIndex] = (OUTLET_DATA[i].position[1]>>24)&0xFF;    currentIndex++;        
-        gv.lanData.msgToClient[currentIndex] = OUTLET_DATA[i].current[0]&0xFF;    currentIndex++;
         
+        gv.lanData.msgToClient[currentIndex] = OUTLET_DATA[i].current[0]&0xFF;    currentIndex++;
         gv.lanData.msgToClient[currentIndex] = (OUTLET_DATA[i].current[0]>>8)&0xFF;    currentIndex++;
         gv.lanData.msgToClient[currentIndex] = (OUTLET_DATA[i].current[0]>>16)&0xFF;    currentIndex++;
         gv.lanData.msgToClient[currentIndex] = (OUTLET_DATA[i].current[0]>>24)&0xFF;    currentIndex++;
@@ -763,9 +757,43 @@ int LAN2CAN_SendToPC(void) {
     // ----------------------------------------------------------------------------------------------------
     
     // Soda Dispenser -------------------------------------------------------------------------------------
+//    gv.lanData.msgToClient[currentIndex] = 0x24;        currentIndex++;
+//    // Calculate data size
+//    dataSize = 4 + 14*MAX_SODA;
+//    gv.lanData.msgToClient[currentIndex] = (uint8_t) (dataSize);        currentIndex++;
+//    gv.lanData.msgToClient[currentIndex] = (uint8_t) (dataSize >> 8);   currentIndex++;
+//    gv.lanData.msgToClient[currentIndex] = 0x01;       currentIndex++;
+//    gv.lanData.msgToClient[currentIndex] = 0x00;       currentIndex++;
+//    // Data type: Soda Dispenser (0xA6)
+//    gv.lanData.msgToClient[currentIndex] = 0xA6;       currentIndex++;
+//
+//    for(i=0; i<MAX_SODA; i++){
+//        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].connection_status;                      currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[0].value)&0xFF;               currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[0].value)>>8)&0xFF;          currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[0].calib_param)&0xFF;         currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[0].calib_param)>>8)&0xFF;    currentIndex++;
+//        
+//        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].loadcell[0].error;                     currentIndex++;
+//        
+//        gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[1].value)&0xFF;               currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[1].value)>>8)&0xFF;          currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[1].calib_param)&0xFF;         currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[1].calib_param)>>8)&0xFF;    currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].loadcell[1].error;                     currentIndex++;
+//        
+//        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].out_state;                             currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].out_count;                             currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].last_error;                            currentIndex++;
+//    }
+//    gv.lanData.msgToClient[currentIndex] = 0x25;
+//    currentIndex++;
+    
+    // ----------------------------------------------------------------------------------------------------
+    // Soda Dispenser -------------------------------------------------------------------------------------
     gv.lanData.msgToClient[currentIndex] = 0x24;        currentIndex++;
     // Calculate data size
-    dataSize = 4 + 14*MAX_SODA;
+    dataSize = 4 + 9*MAX_SODA;
     gv.lanData.msgToClient[currentIndex] = (uint8_t) (dataSize);        currentIndex++;
     gv.lanData.msgToClient[currentIndex] = (uint8_t) (dataSize >> 8);   currentIndex++;
     gv.lanData.msgToClient[currentIndex] = 0x01;       currentIndex++;
@@ -781,7 +809,43 @@ int LAN2CAN_SendToPC(void) {
         gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[0].calib_param)>>8)&0xFF;    currentIndex++;
         
         gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].loadcell[0].error;                     currentIndex++;
+//        
+//        gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[1].value)&0xFF;               currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[1].value)>>8)&0xFF;          currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[1].calib_param)&0xFF;         currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[1].calib_param)>>8)&0xFF;    currentIndex++;
+//        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].loadcell[1].error;                     currentIndex++;
+//        
+        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].out_state;                             currentIndex++;
+        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].out_count;                             currentIndex++;
+        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].last_error;                            currentIndex++;
+    }
+    gv.lanData.msgToClient[currentIndex] = 0x25;
+    currentIndex++;
+    // ----------------------------------------------------------------------------------------------------
+
+    
+    // ----------------------------------------------------------------------------------------------------
+    // Hot Dispenser -------------------------------------------------------------------------------------
+    gv.lanData.msgToClient[currentIndex] = 0x24;        currentIndex++;
+    // Calculate data size
+    dataSize = 4 + 14;
+    gv.lanData.msgToClient[currentIndex] = (uint8_t) (dataSize);        currentIndex++;
+    gv.lanData.msgToClient[currentIndex] = (uint8_t) (dataSize >> 8);   currentIndex++;
+    gv.lanData.msgToClient[currentIndex] = 0x01;       currentIndex++;
+    gv.lanData.msgToClient[currentIndex] = 0x00;       currentIndex++;
+    // Data type: Hot Dispenser (0xA7)
+    gv.lanData.msgToClient[currentIndex] = 0xA7;       currentIndex++;
+
+    for(i=0; i<1; i++){
+        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].connection_status;                      currentIndex++;
+        gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[0].value)&0xFF;               currentIndex++;
+        gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[0].value)>>8)&0xFF;          currentIndex++;
+        gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[0].calib_param)&0xFF;         currentIndex++;
+        gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[0].calib_param)>>8)&0xFF;    currentIndex++;
         
+        gv.lanData.msgToClient[currentIndex] = SODA_DATA[i].loadcell[0].error;                     currentIndex++;
+//        
         gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[1].value)&0xFF;               currentIndex++;
         gv.lanData.msgToClient[currentIndex] = ((SODA_DATA[i].loadcell[1].value)>>8)&0xFF;          currentIndex++;
         gv.lanData.msgToClient[currentIndex] = (SODA_DATA[i].loadcell[1].calib_param)&0xFF;         currentIndex++;
@@ -796,7 +860,6 @@ int LAN2CAN_SendToPC(void) {
     currentIndex++;
     // ----------------------------------------------------------------------------------------------------
 
-    
     // Platform Sensor -------------------------------------------------------------------------------------
     gv.lanData.msgToClient[currentIndex] = 0x24;        currentIndex++;
     // Calculate data size
@@ -841,10 +904,69 @@ int LAN2CAN_CANClearBuffer(void) {
     return GPIF_NO_ERR;
 }
 
+#define PLATFORM_OPENED     0
+#define PLATFORM_CLOSED     1
+static int PLATFORM_SENSOR_A = PLATFORM_OPENED;   // 0: opened    1: closed
+static int PLATFORM_SENSOR_B = PLATFORM_OPENED;
 
 
-
-void LAN2CAN_TaskFunction(void){    
+void LAN2CAN_TaskFunction(void){   
+    // Platform Sensor Check
+    static int go_to_open_cnt_A = 0;
+    static int go_to_open_cnt_B = 0;
+    static int go_to_close_cnt_A = 0;
+    static int go_to_close_cnt_B = 0;
+    if(PLATFORM_SENSOR_A == PLATFORM_OPENED){
+        if(PORTCbits.RC15 == PLATFORM_CLOSED){
+            go_to_close_cnt_A++;
+        }else{
+            go_to_close_cnt_A = 0;
+        }
+        if(go_to_close_cnt_A > 200){
+            PLATFORM_SENSOR_A = PLATFORM_CLOSED;
+            go_to_close_cnt_A = 0;
+            go_to_open_cnt_A = 0;
+        }
+    }else{
+        if(PORTCbits.RC15 == PLATFORM_OPENED){
+            go_to_open_cnt_A++;
+        }else{
+            go_to_open_cnt_A = 0;
+        }
+        if(go_to_open_cnt_A > 200){
+            PLATFORM_SENSOR_A = PLATFORM_OPENED;
+            go_to_close_cnt_A = 0;
+            go_to_open_cnt_A = 0;
+        }
+    }
+    
+    if(PLATFORM_SENSOR_B == PLATFORM_OPENED){
+        if(PORTBbits.RB14 == PLATFORM_CLOSED){
+            go_to_close_cnt_B++;
+        }else{
+            go_to_close_cnt_B = 0;
+        }
+        if(go_to_close_cnt_B > 200){
+            PLATFORM_SENSOR_B = PLATFORM_CLOSED;
+            go_to_close_cnt_B = 0;
+            go_to_open_cnt_B = 0;
+        }
+    }else{
+        if(PORTBbits.RB14 == PLATFORM_OPENED){
+            go_to_open_cnt_B++;
+        }else{
+            go_to_open_cnt_B = 0;
+        }
+        if(go_to_open_cnt_B > 200){
+            PLATFORM_SENSOR_B = PLATFORM_OPENED;
+            go_to_close_cnt_B = 0;
+            go_to_open_cnt_B = 0;
+        }
+    }
+    PLATFORM_DATA[0].sensorA = PLATFORM_SENSOR_A;
+    PLATFORM_DATA[0].sensorB = PLATFORM_SENSOR_B;
+    
+    
     // Loop Timer 100msec
     if (gv.sysTaskHandle == SYS_TMR_HANDLE_INVALID) {
         gv.sysTaskHandle = SYS_TMR_DelayMS(100);

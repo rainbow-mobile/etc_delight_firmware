@@ -90,7 +90,7 @@ section                    address      alignment gaps    total length  (dec)
 .ndata                      0x103c                   0            0x10  (16)
 .nbss                       0x104c                   0             0x4  (4)
 .bss                        0x1050                   0            0x12  (18)
-_04E08420674419f9           0x1100                   0           0x100  (256)
+_04FFD42068c2cd11           0x1100                   0           0x100  (256)
 
                  Total data memory used (bytes):          0x162  (354) 2%
 
@@ -334,13 +334,13 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x62f5
+.debug_info       0x000000       0x62fa
  *(.debug_info)
- .debug_info      0x000000       0x1b07 build/default/production/main.o
- .debug_info      0x001b07       0x2836 build/default/production/can.o
- .debug_info      0x00433d        0x8b9 build/default/production/timer.o
- .debug_info      0x004bf6       0x117d build/default/production/gpio.o
- .debug_info      0x005d73        0x582 build/default/production/adc.o
+ .debug_info      0x000000       0x1b08 build/default/production/main.o
+ .debug_info      0x001b08       0x2837 build/default/production/can.o
+ .debug_info      0x00433f        0x8ba build/default/production/timer.o
+ .debug_info      0x004bf9       0x117e build/default/production/gpio.o
+ .debug_info      0x005d77        0x583 build/default/production/adc.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x620
@@ -1586,9 +1586,9 @@ __c30_signature
  .nbss              0x104c          0x4 build/default/production/can.o
                     0x104c                  _BNO
 
-_04E08420674419f9
+_04FFD42068c2cd11
                     0x1100        0x100
- _04E08420674419f9
+ _04FFD42068c2cd11
                     0x1100        0x100 build/default/production/main.o
                     0x1100                  _Ecan1msgBuf
 

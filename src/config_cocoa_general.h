@@ -59,7 +59,7 @@ static double       R2D     = 57.295779513082323;
 #include "function_utilities.h"
 
 
-#define MAX_CUP         2
+#define MAX_CUP         4 
 #define MAX_ICE         1
 #define MAX_SODA        1
 #define MAX_SYRUP       1

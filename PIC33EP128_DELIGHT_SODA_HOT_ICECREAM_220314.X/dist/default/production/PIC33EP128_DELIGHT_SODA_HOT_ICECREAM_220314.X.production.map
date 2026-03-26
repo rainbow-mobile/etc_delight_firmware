@@ -115,7 +115,7 @@ section                    address      alignment gaps    total length  (dec)
 .nbss                       0x1076                   0             0x2  (2)
 .bss                        0x1078                   0            0x26  (38)
 .data                       0x109e                   0             0x2  (2)
-_04E7412067441da5           0x1100                   0           0x100  (256)
+_04FC812068b75acd           0x1100                   0           0x100  (256)
 
                  Total data memory used (bytes):          0x1a0  (416) 2%
 
@@ -411,13 +411,13 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x64de
+.debug_info       0x000000       0x64f2
  *(.debug_info)
- .debug_info      0x000000       0x2009 build/default/production/main.o
- .debug_info      0x002009       0x2837 build/default/production/can.o
- .debug_info      0x004840        0x76f build/default/production/timer.o
- .debug_info      0x004faf       0x117c build/default/production/loadcell.o
- .debug_info      0x00612b        0x3b3 build/default/production/gpio.o
+ .debug_info      0x000000       0x200d build/default/production/main.o
+ .debug_info      0x00200d       0x283b build/default/production/can.o
+ .debug_info      0x004848        0x773 build/default/production/timer.o
+ .debug_info      0x004fbb       0x1180 build/default/production/loadcell.o
+ .debug_info      0x00613b        0x3b7 build/default/production/gpio.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x6c8
@@ -1667,9 +1667,9 @@ __c30_signature
 .nbss               0x1076          0x2
  .nbss              0x1076          0x2 build/default/production/can.o
 
-_04E7412067441da5
+_04FC812068b75acd
                     0x1100        0x100
- _04E7412067441da5
+ _04FC812068b75acd
                     0x1100        0x100 build/default/production/main.o
                     0x1100                  _Ecan1msgBuf
 

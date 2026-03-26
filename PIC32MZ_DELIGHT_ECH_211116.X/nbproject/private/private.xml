@@ -11,8 +11,6 @@
         <group name="BobaRobo"/>
         <group name="Free"/>
         <group name="Delight"/>
-        <group name="Delight_Final">
-            <file>file:/C:/Users/USER/Desktop/firmware_delight%20(2)/MAIN_CONTROLLER_ECH/src/system_config/default/system_init.c</file>
-        </group>
+        <group name="Delight_Final"/>
     </open-files>
 </project-private>

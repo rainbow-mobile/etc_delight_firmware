@@ -17,12 +17,6 @@
             <file>file:/C:/Users/USER/Desktop/firmware_kenya/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/board_definition.h</file>
             <file>file:/C:/Users/USER/Desktop/firmware_kenya/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/status.c</file>
         </group>
-        <group name="Delight_Final">
-            <file>file:/C:/Users/USER/Desktop/firmware_kenya/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/board_definition.h</file>
-            <file>file:/C:/Users/USER/Desktop/firmware_kenya/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/status.c</file>
-            <file>file:/C:/Users/USER/Desktop/firmware_kenya/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/execution.c</file>
-            <file>file:/C:/Users/USER/Desktop/firmware_kenya/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/home.c</file>
-            <file>file:/C:/Users/USER/Desktop/firmware_kenya/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/PIC32MK_L6205_OUTLET_IGNORE_CUR_220914.X/main.c</file>
-        </group>
+        <group name="Delight_Final"/>
     </open-files>
 </project-private>

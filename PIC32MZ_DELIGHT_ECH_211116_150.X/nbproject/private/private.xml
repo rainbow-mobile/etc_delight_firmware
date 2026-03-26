@@ -12,7 +12,7 @@
         <group name="Free"/>
         <group name="Delight"/>
         <group name="Delight_Final">
-            <file>file:/C:/Users/USER/Desktop/firmware_delight%20(2)/MAIN_CONTROLLER_ECH/src/system_config/default/system_init.c</file>
+            <file>file:/C:/Users/USER/Desktop/etc_delight_firmware/src/LAN2CAN.c</file>
         </group>
     </open-files>
 </project-private>
